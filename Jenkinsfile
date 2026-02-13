@@ -24,5 +24,18 @@ pipeline{
                 }
             }
         }
+
+         stage("Approval for Deployment") {
+            steps {
+                input message: 'Approve deployment to production?',
+                      ok: 'Deploy to render'
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                echo "Deploying application..."
+            }
+        }
     }
 }
