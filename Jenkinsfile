@@ -38,4 +38,17 @@ pipeline{
             }
         }
     }
+	
+	post {
+        always {
+            echo 'Pipeline completed'
+        }
+        success {
+            echo 'Build succeeded'
+			cleanWs()
+        }
+        failure {
+            echo 'Build failed, keeping workspace for debugging'
+        }
+    }
 }
